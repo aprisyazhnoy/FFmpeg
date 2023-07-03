@@ -32,7 +32,18 @@
 #include "ion_sunxi.h"
 #include "cedar_ve.h"
 
-#define LOGMEMORYFILE "/tmp/debug_mem.log"
+
+#define LOGMEMORYFILE "/tmp/debug_mem.log" // add  log file memory to debug next bugs
+//when called from the command line baresip falls 3 times on these lines, when ctrl-c passes more than 3 times
+//sunxi kernel 3.4.39-h3
+//[VDPAU SUNXI] VE version 0x1680 opened.
+//[0:00:00] audio=0/0 video=0/0 (bit/s) efps=0.0/0.0    
+//Thread 12 "v4l2" received signal SIGSEGV, Segmentation fault.
+//[Switching to Thread 0xb2e6c460 (LWP 18120)]
+//memlist_add (mem=0xb1b71780) at libavcodec/arm/sunxi/ve.c:93
+//warning: Source file is more recent than executable.
+//93   m = m->next;
+
 #define LOCKFILE "/tmp/cedar_dev.lck"
 #define DEVICE "/dev/cedar_dev"
 #define PAGE_OFFSET (0xc0000000) // from kernel
