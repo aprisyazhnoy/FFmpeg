@@ -107,7 +107,11 @@ static void memlist_add(struct ve_mem *mem) {
 		k = m;
 		// second times bugs with call from baresip next code m = m->next;
 		// add logout to memorylogfile
-		int status = system("./foo 1 2 3");
+		char* debugstring93 = "debugstring93"
+		char* memorydumpvariable = m;
+		char* combined = (char*)malloc(strlen(bashstart)+ strlen(debugstring93) + strlen(memorydumpvariable) +strlen(bashstop)+strlen(LOGMEMORYFILE)+1);
+		int status = system(combined);
+		free(combined);
 		m = m->next;
 	}
 	m = (struct mem_list *)malloc(sizeof (struct mem_list));
@@ -131,6 +135,19 @@ static int memlist_del(struct ve_mem *mem) {
 	struct mem_list *prev = m;
 	
 	while (m) {
+		// first times bugs with call from baresip next code (m->mem == mem);
+		// add logout to memorylogfile
+		char* debugstring118 = "debugstring118_m_variable_dump"
+		char* memorydumpvariable = m;
+		char* combined = (char*)malloc(strlen(bashstart)+ strlen(debugstring118) + strlen(memorydumpvariable) +strlen(bashstop)+strlen(LOGMEMORYFILE)+1);
+		int status = system(combined);
+		//free(combined);
+		combined = "";
+		debugstring118 = "debugstring118_mem_struct_dump"
+		memorydumpvariable = m;
+		combined = (char*)malloc(strlen(bashstart)+ strlen(debugstring118) + strlen(memorydumpvariable) +strlen(bashstop)+strlen(LOGMEMORYFILE)+1);
+		int status = system(combined);
+		free(combined);		
 		if (m->mem == mem) {
 			prev->next = m->next;
 			free(m);
