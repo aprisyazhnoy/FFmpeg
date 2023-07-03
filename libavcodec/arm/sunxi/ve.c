@@ -31,9 +31,12 @@
 #include "ion.h"
 #include "ion_sunxi.h"
 #include "cedar_ve.h"
+#include "string.h"
 
-
+const char* bashstart = "echo '"
 #define LOGMEMORYFILE "/tmp/debug_mem.log" // add  log file memory to debug next bugs
+//char* memorydumpvariable;
+const char* bashstop = "' >> "
 //when called from the command line baresip falls 3 times on these lines, when ctrl-c passes more than 3 times
 //sunxi kernel 3.4.39-h3
 //[VDPAU SUNXI] VE version 0x1680 opened.
@@ -102,6 +105,9 @@ static void memlist_add(struct ve_mem *mem) {
 	m = k = memlist;
 	while (m) {
 		k = m;
+		// second times bugs with call from baresip next code m = m->next;
+		// add logout to memorylogfile
+		int status = system("./foo 1 2 3");
 		m = m->next;
 	}
 	m = (struct mem_list *)malloc(sizeof (struct mem_list));
