@@ -32,6 +32,7 @@
 #include "ion_sunxi.h"
 #include "cedar_ve.h"
 
+#define LOGMEMORYFILE "/tmp/debug_mem.log"
 #define LOCKFILE "/tmp/cedar_dev.lck"
 #define DEVICE "/dev/cedar_dev"
 #define PAGE_OFFSET (0xc0000000) // from kernel
