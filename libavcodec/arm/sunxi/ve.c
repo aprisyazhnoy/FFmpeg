@@ -94,6 +94,16 @@ struct mem_list {
 	struct mem_list *next;
 } *memlist = NULL;
 
+static void memory_log_dump(struct ve_mem *mem) {
+	int numFields = sizeof(struct ve_mem)/PAGE_SIZE; // int? or 4096?
+	int *intPtr = (int *)ptr;
+	for(int i = 0;i < numFields;i++){
+		printf("sdfsdfd", i + 1, *intPtr);
+		intPtr++;
+	}
+	
+}
+
 static void memlist_add(struct ve_mem *mem) {
 	struct mem_list *m, *k;
 	if (memlist == NULL) {
