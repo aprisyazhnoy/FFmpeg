@@ -95,10 +95,14 @@ struct mem_list {
 } *memlist = NULL;
 
 static void memory_log_dump(struct ve_mem *mem) {
-	int numFields = sizeof(struct ve_mem)/PAGE_SIZE; // int? or 4096?
-	int *intPtr = (int *)ptr;
+	int numFields = sizeof(struct ve_mem)/int; // int? or PAGE_SIZE 4096?
+	int *intPtr = (int *)mem;
 	for(int i = 0;i < numFields;i++){
-		printf("sdfsdfd", i + 1, *intPtr);
+		char* memoryPageField = *intPtr;
+		//char* memorydumpvariable = m;
+		char* combined = (char*)malloc(strlen(bashstart) + strlen(memoryPageField) + strlen(bashstop) + strlen(LOGMEMORYFILE) + 1);
+		int status = system(combined);
+		printf("Field memory page %d: %d\n", i + 1, *intPtr);
 		intPtr++;
 	}
 	
@@ -115,6 +119,7 @@ static void memlist_add(struct ve_mem *mem) {
 	m = k = memlist;
 	while (m) {
 		k = m;
+		memory_log_dump(m);
 		// second times bugs with call from baresip next code m = m->next;
 		// add logout to memorylogfile
 		char* debugstring93 = "debugstring93"
@@ -145,6 +150,7 @@ static int memlist_del(struct ve_mem *mem) {
 	struct mem_list *prev = m;
 	
 	while (m) {
+		memory_log_dump(m);
 		// first times bugs with call from baresip next code (m->mem == mem);
 		// add logout to memorylogfile
 		char* debugstring118 = "debugstring118_m_variable_dump"
